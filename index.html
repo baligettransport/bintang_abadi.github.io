@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sewa Ambulance Bali Murah – Layanan Ambulance & Jenazah 24 Jam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            primary: '#DC2626',
+            'primary-dark': '#B91C1C',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    
+    @keyframes float-3d {
+      0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+      50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
+    }
+    
+    @keyframes sonar {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+      70% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.1); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
+    }
+
+    .blob { animation: blob 10s infinite; }
+    .blob-delay-2 { animation-delay: 2s; }
+    .blob-delay-4 { animation-delay: 4s; }
+    .float-3d { animation: float-3d 6s ease-in-out infinite; }
+    .sonar { animation: sonar 2s infinite; }
+    .heartbeat { animation: heartbeat 2s infinite; }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dark .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 40px -10px rgba(220, 38, 38, 0.15);
+      border-color: rgba(220, 38, 38, 0.3);
+    }
+
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .glass-card-light:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(220, 38, 38, 0.1);
+      border-color: rgba(220, 38, 38, 0.2);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(to right, #DC2626, #F87171);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-reverse {
+      background: linear-gradient(to right, #F87171, #DC2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      filter: blur(10px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px);
+    }
+    .dark .nav-blur { background: rgba(15, 23, 42, 0.9); }
+    .nav-blur { background: rgba(255, 255, 255, 0.95); }
+    
+    .emergency-btn {
+      background: linear-gradient(135deg, #DC2626, #B91C1C);
+      box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+    }
+    
+    .emergency-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(220, 38, 38, 0.6);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(37, 211, 102, 0.5);
+    }
+
+    .image-glow {
+      position: relative;
+    }
+
+    .image-glow::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(249, 115, 22, 0.3));
+      border-radius: inherit;
+      filter: blur(30px);
+      z-index: -1;
+    }
+
+    .service-image {
+      transition: all 0.5s ease;
+    }
+
+    .service-card:hover .service-image {
+      transform: scale(1.1);
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item:hover .gallery-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .hero-image-container {
+      position: relative;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .hero-image-container::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .counter-number {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #DC2626, #B91C1C);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #EF4444, #DC2626);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      animation: zoomIn 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-[#030712] text-slate-900 dark:text-white antialiased transition-colors duration-300">
+  
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-slate-200 dark:border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
+            <span class="iconify text-white text-xl md:text-2xl" data-icon="mdi:ambulance"></span>
+          </div>
+          <div class="hidden sm:block">
+            <span class="text-lg md:text-xl font-bold">BINTANG ABADI</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="nav_subtitle">Layanan 24 Jam</p>
+          </div>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#home" class="text-sm font-medium hover:text-red-500 dark:hover:text-red-400 transition-colors" data-i18n="nav_home">Home</a>
+          <a href="#tentang" class="text-sm font-medium hover:text-red-500 dark:hover:text-red-400 transition-colors" data-i18n="nav_about">Tentang Kami</a>
+          <a href="#layanan" class="text-sm font-medium hover:text-red-500 dark:hover:text-red-400 transition-colors" data-i18n="nav_services">Layanan</a>
+          <a href="#galeri" class="text-sm font-medium hover:text-red-500 dark:hover:text-red-400 transition-colors" data-i18n="nav_gallery">Galeri</a>
+          <a href="#kontak" class="text-sm font-medium hover:text-red-500 dark:hover:text-red-400 transition-colors" data-i18n="nav_contact">Kontak</a>
+        </div>
+        
+        <!-- Controls -->
+        <div class="flex items-center gap-2 md:gap-3">
+          <!-- Language Toggle -->
+          <button id="langToggle" class="p-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-colors text-sm font-bold border border-slate-200 dark:border-white/10">
+            EN
+          </button>
+
+          <!-- Theme Toggle -->
+          <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" title="Toggle Dark/Light Mode">
+            <span class="iconify text-xl dark:hidden" data-icon="mdi:moon-waning-crescent"></span>
+            <span class="iconify text-xl hidden dark:block" data-icon="mdi:white-balance-sunny"></span>
+          </button>
+
+          <a href="tel:085176920291" class="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-red-600 hover:bg-red-500 transition-all text-sm font-semibold text-white sonar">
+            <span class="iconify text-lg" data-icon="mdi:phone"></span>
+            <span class="hidden md:inline">085176920291</span>
+          </a>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+            <span class="iconify text-2xl" data-icon="mdi:menu"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#home" class="block py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" data-i18n="nav_home">Home</a>
+        <a href="#tentang" class="block py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" data-i18n="nav_about">Tentang Kami</a>
+        <a href="#layanan" class="block py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" data-i18n="nav_services">Layanan</a>
+        <a href="#galeri" class="block py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" data-i18n="nav_gallery">Galeri</a>
+        <a href="#kontak" class="block py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" data-i18n="nav_contact">Kontak</a>
+        <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex gap-2">
+          <a href="tel:085176920291" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-red-600 text-white font-semibold">
+            <span class="iconify" data-icon="mdi:phone"></span>
+            <span>Telepon</span>
+          </a>
+          <a href="https://wa.me/6285176920291" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-semibold">
+            <span class="iconify" data-icon="mdi:whatsapp"></span>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <!-- Background Blobs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-[128px] blob mix-blend-screen"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[128px] blob blob-delay-2 mix-blend-screen"></div>
+    <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-rose-500/10 rounded-full blur-[128px] blob blob-delay-4 mix-blend-screen"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-12 lg:py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Content -->
+        <div class="text-center lg:text-left">
+          <!-- Badge -->
+          <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+            </span>
+            <span class="text-sm font-medium text-red-600 dark:text-red-400" data-i18n="hero_badge">Layanan 24 Jam Siap Membantu</span>
+          </div>
+          
+          <!-- Heading -->
+          <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style="transition-delay: 100ms;">
+            <span data-i18n="hero_title_1">Sewa Ambulance Bali Murah</span>
+          </h1>
+          <h2 class="reveal text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style="transition-delay: 150ms;">
+            <span class="gradient-text" data-i18n="hero_title_2">Layanan Ambulance & Jenazah 24 Jam</span>
+          </h2>
+          
+          <!-- Description -->
+          <p class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8" style="transition-delay: 200ms;" data-i18n="hero_desc">
+            Tim kami siap melayani Anda kapan pun. Hubungi kami untuk layanan ambulance atau kebutuhan pemakaman dengan respon cepat dan ramah.
+          </p>
+          
+          <!-- CTA Buttons -->
+          <div class="reveal flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10" style="transition-delay: 300ms;">
+            <a href="tel:085176920291" class="emergency-btn group flex items-center gap-3 px-8 py-4 rounded-full text-white font-bold text-lg transition-all duration-300 w-full sm:w-auto justify-center">
+              <span class="iconify text-2xl heartbeat" data-icon="mdi:phone-in-talk"></span>
+              <span data-i18n="hero_cta_1">Hubungi Kami 24 Jam</span>
+            </a>
+            <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20butuh%20layanan%20ambulance" class="whatsapp-btn flex items-center gap-3 px-8 py-4 rounded-full text-white font-semibold text-lg transition-all duration-300 w-full sm:w-auto justify-center">
+              <span class="iconify text-2xl" data-icon="mdi:whatsapp"></span>
+              <span data-i18n="hero_cta_2">Chat WhatsApp</span>
+            </a>
+          </div>
+          
+          <!-- Stats -->
+          <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4" style="transition-delay: 400ms;">
+            <div class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold gradient-text counter-number">24/7</div>
+              <div class="text-slate-500 dark:text-slate-400 text-xs md:text-sm mt-1" data-i18n="stat_1">Layanan Non-Stop</div>
+            </div>
+            <div class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold gradient-text counter-number">15+</div>
+              <div class="text-slate-500 dark:text-slate-400 text-xs md:text-sm mt-1" data-i18n="stat_2">Menit Respon</div>
+            </div>
+            <div class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold gradient-text counter-number">500+</div>
+              <div class="text-slate-500 dark:text-slate-400 text-xs md:text-sm mt-1" data-i18n="stat_3">Klien Terlayani</div>
+            </div>
+            <div class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold gradient-text counter-number">10+</div>
+              <div class="text-slate-500 dark:text-slate-400 text-xs md:text-sm mt-1" data-i18n="stat_4">Armada Siaga</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Image -->
+        <div class="reveal hero-image-container" style="transition-delay: 200ms;">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-3xl blur-2xl"></div>
+            <div class="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=600&h=500&fit=crop" alt="Ambulance Bali" class="w-full h-[400px] lg:h-[500px] object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center heartbeat">
+                    <span class="iconify text-2xl text-white" data-icon="mdi:ambulance"></span>
+                  </div>
+                  <div>
+                    <div class="font-bold text-white" data-i18n="hero_image_title">Armada Siaga 24 Jam</div>
+                    <div class="text-sm text-slate-300" data-i18n="hero_image_desc">Respon cepat ke seluruh wilayah Bali</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
+      <a href="#tentang" class="flex flex-col items-center gap-2 text-slate-400 hover:text-red-500 transition-colors">
+        <span class="text-sm" data-i18n="scroll_down">Scroll ke bawah</span>
+        <span class="iconify text-3xl" data-icon="mdi:chevron-double-down"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Tentang Kami Section -->
+  <section id="tentang" class="relative py-24 overflow-hidden bg-slate-50 dark:bg-transparent">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Images -->
+        <div class="reveal relative" style="transition-delay: 100ms;">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <div class="image-glow rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=300&h=250&fit=crop" alt="Tim Medis" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="image-glow rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=300&h=300&fit=crop" alt="Peralatan Medis" class="w-full h-56 object-cover hover:scale-110 transition-transform duration-500">
+              </div>
+            </div>
+            <div class="space-y-4 pt-8">
+              <div class="image-glow rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=300&h=300&fit=crop" alt="Ambulance Modern" class="w-full h-56 object-cover hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="image-glow rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=300&h=250&fit=crop" alt="Penanganan Pasien" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-4 -right-4 glass-card glass-card-light dark:bg-slate-800 rounded-2xl p-4 flex items-center gap-4 shadow-xl z-10">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+              <span class="iconify text-3xl text-white" data-icon="mdi:certificate"></span>
+            </div>
+            <div>
+              <div class="font-bold" data-i18n="badge_title">Terdaftar Resmi</div>
+              <div class="text-sm text-slate-500 dark:text-slate-400" data-i18n="badge_subtitle">Kemenkumham RI</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Content -->
+        <div>
+          <span class="reveal inline-block text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-4" data-i18n="about_label">Tentang Kami</span>
+          <h2 class="reveal text-3xl md:text-5xl font-bold mb-6">
+            CV. Bintang Abadi <span class="gradient-text">Ambulance Service</span>
+          </h2>
+          <p class="reveal text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6" data-i18n="about_p1">
+            CV. Bintang Abadi Ambulance Service adalah perusahaan resmi yang bergerak di bidang layanan ambulance, pemakaman, dan kedukaan. Sesuai dengan keterangan terdaftar di Kementerian Hukum dan HAM dengan nomor AHU-0055264-AH.01.14 Tahun 2024.
+          </p>
+          <p class="reveal text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8" data-i18n="about_p2">
+            Kami berkomitmen memberikan layanan terbaik dengan respon cepat, armada terawat, dan tim profesional yang berpengalaman. Melayani seluruh wilayah Bali dan sekitarnya dengan sepenuh hati.
+          </p>
+          
+          <!-- Features -->
+          <div class="reveal grid sm:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/20">
+                <span class="iconify text-white text-2xl" data-icon="mdi:shield-check"></span>
+              </div>
+              <span class="font-medium" data-i18n="feat_1">Perusahaan Resmi</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center shadow-lg shadow-orange-500/20">
+                <span class="iconify text-white text-2xl" data-icon="mdi:clock-fast"></span>
+              </div>
+              <span class="font-medium" data-i18n="feat_2">Respon Cepat</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center shadow-lg shadow-rose-500/20">
+                <span class="iconify text-white text-2xl" data-icon="mdi:account-group"></span>
+              </div>
+              <span class="font-medium" data-i18n="feat_3">Tim Profesional</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <span class="iconify text-white text-2xl" data-icon="mdi:currency-usd"></span>
+              </div>
+              <span class="font-medium" data-i18n="feat_4">Harga Terjangkau</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20ambulance" class="reveal inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold hover:gap-4 transition-all">
+            <span data-i18n="about_cta">Pelajari Lebih Lanjut</span>
+            <span class="iconify text-xl" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layanan Section -->
+  <section id="layanan" class="relative py-24 bg-slate-100/50 dark:bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-4" data-i18n="service_label">Layanan Kami</span>
+        <h2 class="reveal text-3xl md:text-5xl font-bold mb-4">
+          <span data-i18n="service_title_1">Layanan</span> <span class="gradient-text" data-i18n="service_title_2">Profesional</span> 24 Jam
+        </h2>
+        <p class="reveal text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="service_desc">
+          Kami menyediakan berbagai layanan ambulance dan kedukaan dengan standar profesional
+        </p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" onclick="openServiceModal('emergency')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=400&h=200&fit=crop" alt="Ambulance Emergency" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:ambulance"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_1_title">Ambulance Emergency</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_1_desc">Layanan ambulance darurat, evakuasi korban kecelakaan, dan transfer pasien antar rumah sakit dengan peralatan lengkap.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 2 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 100ms;" onclick="openServiceModal('jenazah')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Ambulance Jenazah" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:account-heart"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_2_title">Ambulance Jenazah</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_2_desc">Layanan ambulance khusus untuk pengangkutan jenazah dengan penghormatan dan penanganan yang layak.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 3 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 200ms;" onclick="openServiceModal('standby')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=200&fit=crop" alt="Standby Event" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:calendar-check"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_3_title">Standby Event</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_3_desc">Layanan ambulance standby untuk acara-acara besar, konser, olahraga, dan gathering dengan tim medis lengkap.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 4 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 300ms;" onclick="openServiceModal('cargo')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=200&fit=crop" alt="Cargo Jenazah" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:airplane"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_4_title">Cargo Jenazah</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_4_desc">Pengurusan cargo jenazah lengkap termasuk dokumen, peti khusus, dan koordinasi dengan pihak bandara.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 5 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 400ms;" onclick="openServiceModal('formalin')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1583912267550-d974311a9a6e?w=400&h=200&fit=crop" alt="Suntik Formalin" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:needle"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_5_title">Suntik Formalin</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_5_desc">Layanan suntik formalin jenazah oleh tenaga profesional untuk menjaga kondisi jenazah.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 6 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 500ms;" onclick="openServiceModal('peti')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-152717737 elevate-8426-9b0d46a9bbbd?w=400&h=200&fit=crop" alt="Peti Jenazah" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:coffin"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_6_title">Peti Jenazah</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_6_desc">Menyediakan berbagai jenis peti jenazah berkualitas dengan berbagai pilihan bahan dan ukuran.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 7 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 600ms;" onclick="openServiceModal('repatriasi')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?w=400&h=200&fit=crop" alt="Repatriasi" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:earth"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_7_title">Repatriasi Luar Negeri</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_7_desc">Layanan repatriasi jenazah dari/ke luar negeri dengan pengurusan dokumen lengkap.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 8 -->
+        <div class="reveal service-card glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden group cursor-pointer" style="transition-delay: 700ms;" onclick="openServiceModal('kremasi')">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=400&h=200&fit=crop" alt="Rumah Duka" class="service-image w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg">
+              <span class="iconify text-2xl text-white" data-icon="mdi:home-heart"></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-red-500 transition-colors" data-i18n="svc_8_title">Rumah Duka & Kremasi</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4" data-i18n="svc_8_desc">Pelayanan kedukaan termasuk rumah duka, kremasi, dan pemindahan makam tradisi.</p>
+            <div class="flex items-center text-red-600 dark:text-red-400 font-medium group-hover:gap-3 transition-all">
+              <span data-i18n="svc_cta">Hubungi Sekarang</span>
+              <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card 9 - CTA -->
+        <div class="reveal glass-card glass-card-light dark:bg-gradient-to-br dark:from-red-500/10 dark:to-orange-500/10 rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-red-50 to-orange-50 border-red-100 dark:border-red-500/30" style="transition-delay: 800ms;">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center mb-6 shadow-lg shadow-red-500/30 heartbeat">
+            <span class="iconify text-4xl text-white" data-icon="mdi:phone-alert"></span>
+          </div>
+          <h3 class="text-xl font-bold mb-3" data-i18n="svc_9_title">Layanan Lainnya</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-6" data-i18n="svc_9_desc">Hubungi kami untuk kebutuhan khusus lainnya. Tim kami siap membantu 24 jam setiap hari.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="tel:085176920291" class="emergency-btn flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition-all">
+              <span class="iconify text-xl" data-icon="mdi:phone"></span>
+              <span>Telepon</span>
+            </a>
+            <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20butuh%20layanan%20khusus" class="whatsapp-btn flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold transition-all">
+              <span class="iconify text-xl" data-icon="mdi:whatsapp"></span>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Penanganan Section -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-900/5 to-orange-900/5 dark:from-red-900/10 dark:to-orange-900/10"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-4" data-i18n="handling_label">Penanganan</span>
+        <h2 class="reveal text-3xl md:text-5xl font-bold mb-4">
+          <span data-i18n="handling_title_1">Penanganan</span> <span class="gradient-text" data-i18n="handling_title_2">Profesional</span>
+        </h2>
+        <p class="reveal text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="handling_desc">
+          Tim medis profesional kami siap memberikan penanganan terbaik dengan peralatan standar medis
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal group">
+          <div class="glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=300&fit=crop" alt="Penanganan Darurat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="w-10 h-10 rounded-lg bg-red-500 flex items-center justify-center mb-2">
+                  <span class="iconify text-xl text-white" data-icon="mdi-heart-pulse"></span>
+                </div>
+                <h4 class="font-bold text-white" data-i18n="handling_1_title">Penanganan Darurat</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal group" style="transition-delay: 100ms;">
+          <div class="glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&h=300&fit=crop" alt="Evakuasi Pasien" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center mb-2">
+                  <span class="iconify text-xl text-white" data-icon="mdi-stretcher"></span>
+                </div>
+                <h4 class="font-bold text-white" data-i18n="handling_2_title">Evakuasi Pasien</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal group" style="transition-delay: 200ms;">
+          <div class="glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop" alt="Perawatan Medis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center mb-2">
+                  <span class="iconify text-xl text-white" data-icon="mdi-medical-bag"></span>
+                </div>
+                <h4 class="font-bold text-white" data-i18n="handling_3_title">Perawatan Medis</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal group" style="transition-delay: 300ms;">
+          <div class="glass-card glass-card-light dark:bg-white/5 rounded-3xl overflow-hidden">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=300&fit=crop" alt="Transfer Rumah Sakit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center mb-2">
+                  <span class="iconify text-xl text-white" data-icon="mdi-hospital-building"></span>
+                </div>
+                <h4 class="font-bold text-white" data-i18n="handling_4_title">Transfer RS</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="galeri" class="relative py-24 overflow-hidden bg-slate-50 dark:bg-transparent">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-4" data-i18n="gallery_label">Galeri</span>
+        <h2 class="reveal text-3xl md:text-5xl font-bold mb-4">
+          <span data-i18n="gallery_title_1">Dokumentasi</span> <span class="gradient-text" data-i18n="gallery_title_2">Kegiatan</span>
+        </h2>
+        <p class="reveal text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="gallery_desc">
+          Lihat dokumentasi armada dan kegiatan pelayanan kami
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="reveal gallery-item col-span-2 row-span-2 rounded-3xl overflow-hidden cursor-pointer" onclick="openGalleryModal(0)">
+          <img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=600&h=600&fit=crop" alt="Armada Ambulance" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white text-lg" data-i18n="gallery_1">Armada Ambulance Modern</h4>
+            <p class="text-slate-300 text-sm">10+ unit siaga 24 jam</p>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 100ms;" onclick="openGalleryModal(1)">
+          <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=300&h=300&fit=crop" alt="Tim Medis" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Tim Medis</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 200ms;" onclick="openGalleryModal(2)">
+          <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=300&h=300&fit=crop" alt="Peralatan" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Peralatan</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 300ms;" onclick="openGalleryModal(3)">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=300&h=300&fit=crop" alt="Interior" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Interior</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 400ms;" onclick="openGalleryModal(4)">
+          <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=300&h=300&fit=crop" alt="Layanan 24 Jam" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Layanan 24 Jam</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 500ms;" onclick="openGalleryModal(5)">
+          <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=300&h=300&fit=crop" alt="Penanganan" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Penanganan</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 600ms;" onclick="openGalleryModal(6)">
+          <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=300&h=300&fit=crop" alt="Emergency" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Emergency</h4>
+          </div>
+        </div>
+        <div class="reveal gallery-item rounded-2xl overflow-hidden cursor-pointer" style="transition-delay: 700ms;" onclick="openGalleryModal(7)">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=300&h=300&fit=crop" alt="Medical Care" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500">
+          <div class="gallery-content">
+            <h4 class="font-bold text-white">Medical Care</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 dark:from-red-900/50 dark:to-orange-900/50"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-[128px]"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[128px]"></div>
+    
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+      <div class="reveal">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+          </span>
+          <span class="text-sm font-medium text-white" data-i18n="cta_badge">Siap Melayani 24/7</span>
+        </span>
+        
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
+          <span data-i18n="cta_title_1">Butuh Bantuan</span> <span class="text-orange-200" data-i18n="cta_title_2">Darurat?</span>
+        </h2>
+        <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto" data-i18n="cta_desc">
+          Hubungi kami sekarang juga. Kami siap membantu Anda 24/7 dengan layanan cepat, aman, dan terpercaya.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="tel:085176920291" class="group flex items-center gap-3 px-10 py-5 rounded-full bg-white text-red-600 font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/20">
+            <span class="iconify text-3xl heartbeat" data-icon="mdi:phone-in-talk"></span>
+            085176920291
+          </a>
+          <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20butuh%20bantuan%20segera" class="whatsapp-btn flex items-center gap-3 px-10 py-5 rounded-full text-white font-bold text-xl transition-all duration-300 hover:scale-105">
+            <span class="iconify text-3xl" data-icon="mdi:whatsapp"></span>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="kontak" class="relative py-24 bg-slate-100/50 dark:bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-4" data-i18n="contact_label">Kontak</span>
+        <h2 class="reveal text-3xl md:text-5xl font-bold mb-4">
+          <span data-i18n="contact_title_1">Hubungi</span> <span class="gradient-text" data-i18n="contact_title_2">Kami</span>
+        </h2>
+        <p class="reveal text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="contact_desc">
+          Kami siap melayani Anda 24 jam setiap hari
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact Info -->
+        <div class="reveal space-y-6">
+          <!-- Phone -->
+          <a href="tel:085176920291" class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-6 flex items-start gap-5 hover:border-red-500/30 transition-all cursor-pointer group">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 group-hover:scale-110 transition-transform">
+              <span class="iconify text-2xl text-white" data-icon="mdi:phone"></span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-1" data-i18n="contact_phone_label">Whatsapp / Telepon</h4>
+              <p class="text-slate-600 dark:text-slate-400">085176920291</p>
+              <span class="inline-block mt-2 text-red-600 dark:text-red-400 font-medium" data-i18n="contact_action">Hubungi Sekarang →</span>
+            </div>
+          </a>
+          
+          <!-- Email -->
+          <a href="mailto:bintangabadi@gmail.com" class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-6 flex items-start gap-5 hover:border-orange-500/30 transition-all cursor-pointer group">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+              <span class="iconify text-2xl text-white" data-icon="mdi:email"></span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-1" data-i18n="contact_email_label">Email</h4>
+              <p class="text-slate-600 dark:text-slate-400">bintangabadi@gmail.com</p>
+              <span class="inline-block mt-2 text-red-600 dark:text-red-400 font-medium" data-i18n="contact_email_action">Kirim Email →</span>
+            </div>
+          </a>
+          
+          <!-- Address -->
+          <a href="https://maps.app.goo.gl/Us3H69RWTE8d85Ld8" target="_blank" class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-6 flex items-start gap-5 hover:border-rose-500/30 transition-all cursor-pointer group">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center flex-shrink-0 shadow-lg shadow-rose-500/30 group-hover:scale-110 transition-transform">
+              <span class="iconify text-2xl text-white" data-icon="mdi:map-marker"></span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-1" data-i18n="contact_address_label">Alamat</h4>
+              <p class="text-slate-600 dark:text-slate-400" data-i18n="address_detail">Jl. Pulau Batam, Dauh Peken, Kec. Tabanan, Kabupaten Tabanan, Bali 82114</p>
+              <span class="inline-block mt-2 text-red-600 dark:text-red-400 font-medium" data-i18n="contact_map_action">Lihat di Google Maps →</span>
+            </div>
+          </a>
+          
+          <!-- Office -->
+          <div class="glass-card glass-card-light dark:bg-white/5 rounded-2xl p-6 flex items-start gap-5">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30">
+              <span class="iconify text-2xl text-white" data-icon="mdi:office-building"></span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-1" data-i18n="contact_office_label">Office</h4>
+              <p class="text-slate-600 dark:text-slate-400">Google Maps: Elvin Ambulance Service (Office)</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Map -->
+        <div class="reveal" style="transition-delay: 200ms;">
+          <div class="glass-card glass-card-light dark:bg-slate-900 rounded-3xl p-2 h-full min-h-[400px] overflow-hidden shadow-xl">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.1107693920176!2d115.1115891!3d-8.535971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23a61cf7e093d%3A0x5cc3eaa36361697c!2sJl.%20Pulau%20Batam%2C%20Dauh%20Peken%2C%20Kec.%20Tabanan%2C%20Kabupaten%20Tabanan%2C%20Bali%2082114!5e0!3m2!1sid!2sid!4v1712304027503!5m2!1sid!2sid"
+              width="100%" 
+              height="100%" 
+              style="border:0; border-radius: 1.5rem; min-height: 380px;" 
+              allowfullscreen="" 
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative py-16 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-transparent">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Company Info -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
+              <span class="iconify text-white text-2xl" data-icon="mdi:ambulance"></span>
+            </div>
+            <div>
+              <span class="text-xl font-bold">Bintang Abadi Ambulance</span>
+              <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="nav_subtitle">Layanan 24 Jam</p>
+            </div>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 max-w-lg" data-i18n="footer_desc">
+            CV. Bintang Abadi Ambulance Service adalah perusahaan resmi yang bergerak di bidang layanan ambulance, pemakaman, dan kedukaan. Terdaftar di Kemenkumham RI dengan nomor AHU-0055264-AH.01.14 Tahun 2024
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex items-center justify-center hover:bg-red-500 hover:border-red-500 hover:text-white transition-all">
+              <span class="iconify text-lg" data-icon="mdi:facebook"></span>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex items-center justify-center hover:bg-red-500 hover:border-red-500 hover:text-white transition-all">
+              <span class="iconify text-lg" data-icon="mdi:instagram"></span>
+            </a>
+            <a href="https://wa.me/6285176920291" target="_blank" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex items-center justify-center hover:bg-emerald-500 hover:border-emerald-500 hover:text-white transition-all">
+              <span class="iconify text-lg" data-icon="mdi:whatsapp"></span>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex items-center justify-center hover:bg-black hover:border-black hover:text-white transition-all">
+              <span class="iconify text-lg" data-icon="mdi:tiktok"></span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Services -->
+        <div>
+          <h4 class="font-semibold text-lg mb-4" data-i18n="footer_services">Layanan</h4>
+          <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_1_title">Ambulance Emergency</a></li>
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_2_title">Ambulance Jenazah</a></li>
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_3_title">Standby Event</a></li>
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_4_title">Cargo Jenazah</a></li>
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_7_title">Repatriasi Luar Negeri</a></li>
+            <li><a href="#layanan" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="svc_6_title">Peti Jenazah</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold text-lg mb-4" data-i18n="footer_contact">Kontak Kami</h4>
+          <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+            <li class="flex items-center gap-2">
+              <span class="iconify text-red-500" data-icon="mdi:phone"></span>
+              <a href="tel:085176920291" class="hover:text-red-600 dark:hover:text-red-400 transition-colors">085176920291</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="iconify text-red-500" data-icon="mdi:email"></span>
+              <a href="mailto:bintangabadi@gmail.com" class="hover:text-red-600 dark:hover:text-red-400 transition-colors text-sm">bintangabadi@gmail.com</a>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="iconify text-red-500 mt-1" data-icon="mdi:map-marker"></span>
+              <span class="text-sm" data-i18n="address_detail">Jl. Pulau Batam, Dauh Peken, Kec. Tabanan, Bali</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Footer -->
+      <div class="pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-slate-500 text-sm text-center md:text-left">
+          Copyright © 2024 Sewa Ambulance Bali Murah. All rights reserved. Developed with ❤️ by JMW
+        </p>
+        <div class="flex items-center gap-4 text-sm text-slate-500">
+          <a href="#" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="#" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="footer_terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <a href="tel:085176920291" class="emergency-btn w-14 h-14 rounded-full flex items-center justify-center text-white sonar" title="Call Now">
+      <span class="iconify text-2xl" data-icon="mdi:phone"></span>
+    </a>
+    <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20butuh%20layanan%20ambulance" class="whatsapp-btn w-14 h-14 rounded-full flex items-center justify-center text-white" title="Chat WhatsApp">
+      <span class="iconify text-2xl" data-icon="mdi:whatsapp"></span>
+    </a>
+  </div>
+
+  <!-- Service Modal -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-lg mx-4 relative">
+      <button onclick="closeServiceModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+        <span class="iconify text-xl" data-icon="mdi:close"></span>
+      </button>
+      <div id="serviceModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="modal">
+    <div class="modal-content max-w-4xl mx-4 relative">
+      <button onclick="closeGalleryModal()" class="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors">
+        <span class="iconify text-2xl" data-icon="mdi:close"></span>
+      </button>
+      <img id="galleryModalImage" src="" alt="Gallery Image" class="w-full rounded-3xl">
+    </div>
+  </div>
+
+  <script>
+    // === TRANSLATIONS ===
+    const translations = {
+      en: {
+        nav_subtitle: "24/7 Service",
+        nav_home: "Home",
+        nav_about: "About Us",
+        nav_services: "Services",
+        nav_gallery: "Gallery",
+        nav_contact: "Contact",
+        hero_badge: "24/7 Service Ready to Help",
+        hero_title_1: "Cheap Ambulance Rental Bali",
+        hero_title_2: "24/7 Ambulance & Funeral Services",
+        hero_desc: "Our team is ready to serve you anytime. Contact us for ambulance services or funeral needs with fast and friendly response.",
+        hero_cta_1: "Call Us 24/7",
+        hero_cta_2: "Chat WhatsApp",
+        hero_image_title: "Fleet Ready 24/7",
+        hero_image_desc: "Fast response throughout Bali",
+        scroll_down: "Scroll down",
+        stat_1: "Non-Stop Service",
+        stat_2: "Minutes Response",
+        stat_3: "Clients Served",
+        stat_4: "Fleet Ready",
+        about_label: "About Us",
+        about_p1: "CV. Bintang Abadi Ambulance Service is an official company engaged in ambulance, funeral, and mourning services. Registered at the Ministry of Law and Human Rights with number AHU-0055264-AH.01.14 Year 2024.",
+        about_p2: "We are committed to providing the best service with fast response, well-maintained fleet, and experienced professional team. Serving the entire Bali region and surrounding areas wholeheartedly.",
+        about_cta: "Learn More",
+        feat_1: "Official Company",
+        feat_2: "Fast Response",
+        feat_3: "Professional Team",
+        feat_4: "Affordable Price",
+        badge_title: "Officially Registered",
+        badge_subtitle: "Ministry of Law RI",
+        service_label: "Our Services",
+        service_title_1: "Professional",
+        service_title_2: "Services",
+        service_desc: "We provide various ambulance and funeral services with professional standards",
+        svc_1_title: "Emergency Ambulance",
+        svc_1_desc: "Emergency ambulance services, accident victim evacuation, and inter-hospital patient transfer with complete equipment.",
+        svc_2_title: "Funeral Ambulance",
+        svc_2_desc: "Special ambulance service for transporting bodies with respect and proper handling.",
+        svc_3_title: "Event Standby",
+        svc_3_desc: "Standby ambulance service for large events, concerts, sports, and gatherings with complete medical team.",
+        svc_4_title: "Body Cargo",
+        svc_4_desc: "Complete body cargo processing including documents, special caskets, and coordination with airport authorities.",
+        svc_5_title: "Formalin Injection",
+        svc_5_desc: "Formalin injection service for bodies by professional staff to preserve the condition of the body.",
+        svc_6_title: "Casket",
+        svc_6_desc: "Providing various types of quality caskets with various choices of materials and sizes.",
+        svc_7_title: "International Repatriation",
+        svc_7_desc: "Repatriation services from/to abroad with complete document processing.",
+        svc_8_title: "Funeral Home & Cremation",
+        svc_8_desc: "Mourning services including funeral homes, cremation, and traditional grave relocation.",
+        svc_9_title: "Other Services",
+        svc_9_desc: "Contact us for other special needs. Our team is ready to help 24 hours a day.",
+        svc_cta: "Contact Now",
+        handling_label: "Handling",
+        handling_title_1: "Professional",
+        handling_title_2: "Handling",
+        handling_desc: "Our professional medical team is ready to provide the best handling with medical standard equipment",
+        handling_1_title: "Emergency Handling",
+        handling_2_title: "Patient Evacuation",
+        handling_3_title: "Medical Care",
+        handling_4_title: "Hospital Transfer",
+        gallery_label: "Gallery",
+        gallery_title_1: "Activity",
+        gallery_title_2: "Documentation",
+        gallery_desc: "See our fleet documentation and service activities",
+        gallery_1: "Modern Ambulance Fleet",
+        cta_badge: "Ready to Serve 24/7",
+        cta_title_1: "Need Emergency",
+        cta_title_2: "Help?",
+        cta_desc: "Contact us right now. We are ready to help you 24/7 with fast, safe, and reliable service.",
+        contact_label: "Contact",
+        contact_title_1: "Contact",
+        contact_title_2: "Us",
+        contact_desc: "We are ready to serve you 24 hours a day",
+        contact_phone_label: "WhatsApp / Phone",
+        contact_action: "Call Now →",
+        contact_email_label: "Email",
+        contact_email_action: "Send Email →",
+        contact_address_label: "Address",
+        address_detail: "Jl. Pulau Batam, Dauh Peken, Tabanan District, Tabanan Regency, Bali 82114",
+        contact_map_action: "View on Google Maps →",
+        contact_office_label: "Office",
+        footer_desc: "CV. Bintang Abadi Ambulance Service is an official company engaged in ambulance, funeral, and mourning services. Registered at the Ministry of Law and Human Rights RI.",
+        footer_services: "Services",
+        footer_contact: "Contact Us",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Service",
+        modal_contact: "Contact Us",
+        modal_call: "Call Now",
+        modal_whatsapp: "WhatsApp"
+      },
+      id: {
+        nav_subtitle: "Layanan 24 Jam",
+        nav_home: "Home",
+        nav_about: "Tentang Kami",
+        nav_services: "Layanan",
+        nav_gallery: "Galeri",
+        nav_contact: "Kontak",
+        hero_badge: "Layanan 24 Jam Siap Membantu",
+        hero_title_1: "Sewa Ambulance Bali Murah",
+        hero_title_2: "Layanan Ambulance & Jenazah 24 Jam",
+        hero_desc: "Tim kami siap melayani Anda kapan pun. Hubungi kami untuk layanan ambulance atau kebutuhan pemakaman dengan respon cepat dan ramah.",
+        hero_cta_1: "Hubungi Kami 24 Jam",
+        hero_cta_2: "Chat WhatsApp",
+        hero_image_title: "Armada Siaga 24 Jam",
+        hero_image_desc: "Respon cepat ke seluruh wilayah Bali",
+        scroll_down: "Scroll ke bawah",
+        stat_1: "Layanan Non-Stop",
+        stat_2: "Menit Respon",
+        stat_3: "Klien Terlayani",
+        stat_4: "Armada Siaga",
+        about_label: "Tentang Kami",
+        about_p1: "CV. Bintang Abadi Ambulance Service adalah perusahaan resmi yang bergerak di bidang layanan ambulance, pemakaman, dan kedukaan. Sesuai dengan keterangan terdaftar di Kementerian Hukum dan HAM dengan nomor AHU-0055264-AH.01.14 Tahun 2024.",
+        about_p2: "Kami berkomitmen memberikan layanan terbaik dengan respon cepat, armada terawat, dan tim profesional yang berpengalaman. Melayani seluruh wilayah Bali dan sekitarnya dengan sepenuh hati.",
+        about_cta: "Pelajari Lebih Lanjut",
+        feat_1: "Perusahaan Resmi",
+        feat_2: "Respon Cepat",
+        feat_3: "Tim Profesional",
+        feat_4: "Harga Terjangkau",
+        badge_title: "Terdaftar Resmi",
+        badge_subtitle: "Kemenkumham RI",
+        service_label: "Layanan Kami",
+        service_title_1: "Layanan",
+        service_title_2: "Profesional",
+        service_desc: "Kami menyediakan berbagai layanan ambulance dan kedukaan dengan standar profesional",
+        svc_1_title: "Ambulance Emergency",
+        svc_1_desc: "Layanan ambulance darurat, evakuasi korban kecelakaan, dan transfer pasien antar rumah sakit dengan peralatan lengkap.",
+        svc_2_title: "Ambulance Jenazah",
+        svc_2_desc: "Layanan ambulance khusus untuk pengangkutan jenazah dengan penghormatan dan penanganan yang layak.",
+        svc_3_title: "Standby Event",
+        svc_3_desc: "Layanan ambulance standby untuk acara-acara besar, konser, olahraga, dan gathering dengan tim medis lengkap.",
+        svc_4_title: "Cargo Jenazah",
+        svc_4_desc: "Pengurusan cargo jenazah lengkap termasuk dokumen, peti khusus, dan koordinasi dengan pihak bandara.",
+        svc_5_title: "Suntik Formalin",
+        svc_5_desc: "Layanan suntik formalin jenazah oleh tenaga profesional untuk menjaga kondisi jenazah.",
+        svc_6_title: "Peti Jenazah",
+        svc_6_desc: "Menyediakan berbagai jenis peti jenazah berkualitas dengan berbagai pilihan bahan dan ukuran.",
+        svc_7_title: "Repatriasi Luar Negeri",
+        svc_7_desc: "Layanan repatriasi jenazah dari/ke luar negeri dengan pengurusan dokumen lengkap.",
+        svc_8_title: "Rumah Duka & Kremasi",
+        svc_8_desc: "Pelayanan kedukaan termasuk rumah duka, kremasi, dan pemindahan makam tradisi.",
+        svc_9_title: "Layanan Lainnya",
+        svc_9_desc: "Hubungi kami untuk kebutuhan khusus lainnya. Tim kami siap membantu 24 jam setiap hari.",
+        svc_cta: "Hubungi Sekarang",
+        handling_label: "Penanganan",
+        handling_title_1: "Penanganan",
+        handling_title_2: "Profesional",
+        handling_desc: "Tim medis profesional kami siap memberikan penanganan terbaik dengan peralatan standar medis",
+        handling_1_title: "Penanganan Darurat",
+        handling_2_title: "Evakuasi Pasien",
+        handling_3_title: "Perawatan Medis",
+        handling_4_title: "Transfer RS",
+        gallery_label: "Galeri",
+        gallery_title_1: "Dokumentasi",
+        gallery_title_2: "Kegiatan",
+        gallery_desc: "Lihat dokumentasi armada dan kegiatan pelayanan kami",
+        gallery_1: "Armada Ambulance Modern",
+        cta_badge: "Siap Melayani 24/7",
+        cta_title_1: "Butuh Bantuan",
+        cta_title_2: "Darurat?",
+        cta_desc: "Hubungi kami sekarang juga. Kami siap membantu Anda 24/7 dengan layanan cepat, aman, dan terpercaya.",
+        contact_label: "Kontak",
+        contact_title_1: "Hubungi",
+        contact_title_2: "Kami",
+        contact_desc: "Kami siap melayani Anda 24 jam setiap hari",
+        contact_phone_label: "Whatsapp / Telepon",
+        contact_action: "Hubungi Sekarang →",
+        contact_email_label: "Email",
+        contact_email_action: "Kirim Email →",
+        contact_address_label: "Alamat",
+        address_detail: "Jl. Pulau Batam, Dauh Peken, Kec. Tabanan, Kabupaten Tabanan, Bali 82114",
+        contact_map_action: "Lihat di Google Maps →",
+        contact_office_label: "Office",
+        footer_desc: "CV. Bintang Abadi Ambulance Service adalah perusahaan resmi yang bergerak di bidang layanan ambulance, pemakaman, dan kedukaan. Terdaftar di Kemenkumham RI dengan nomor AHU-0055264-AH.01.14 Tahun 2024",
+        footer_services: "Layanan",
+        footer_contact: "Kontak Kami",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Service",
+        modal_contact: "Hubungi Kami",
+        modal_call: "Telepon",
+        modal_whatsapp: "WhatsApp"
+      }
+    };
+
+    const serviceDetails = {
+      emergency: {
+        title_en: "Emergency Ambulance",
+        title_id: "Ambulance Emergency",
+        desc_en: "Our emergency ambulance service provides rapid response for critical situations including accidents, medical emergencies, and inter-hospital transfers. Equipped with advanced life support equipment and staffed by trained paramedics.",
+        desc_id: "Layanan ambulance darurat kami memberikan respon cepat untuk situasi kritis termasuk kecelakaan, keadaan darurat medis, dan transfer antar rumah sakit. Dilengkapi dengan peralatan life support canggih dan diawaki oleh paramedic terlatih."
+      },
+      jenazah: {
+        title_en: "Funeral Ambulance",
+        title_id: "Ambulance Jenazah",
+        desc_en: "Dignified and respectful transportation service for the deceased. Our specialized vehicles ensure proper handling throughout the journey.",
+        desc_id: "Layanan transportasi yang bermartabat dan penuh hormat untuk almarhum. Kendaraan khusus kami memastikan penanganan yang tepat sepanjang perjalanan."
+      },
+      standby: {
+        title_en: "Event Standby",
+        title_id: "Standby Event",
+        desc_en: "Professional medical standby service for events, concerts, sports competitions, and gatherings. Complete with medical team and emergency equipment.",
+        desc_id: "Layanan standby medis profesional untuk acara, konser, kompetisi olahraga, dan gathering. Lengkap dengan tim medis dan peralatan darurat."
+      },
+      cargo: {
+        title_en: "Body Cargo Service",
+        title_id: "Cargo Jenazah",
+        desc_en: "Complete body cargo service including documentation, special caskets, and coordination with airport authorities for domestic and international transfers.",
+        desc_id: "Layanan cargo jenazah lengkap termasuk dokumentasi, peti khusus, dan koordinasi dengan pihak bandara untuk transfer domestik dan internasional."
+      },
+      formalin: {
+        title_en: "Formalin Injection",
+        title_id: "Suntik Formalin",
+        desc_en: "Professional formalin injection service to preserve the condition of the deceased. Performed by trained professionals with proper techniques.",
+        desc_id: "Layanan suntik formalin profesional untuk menjaga kondisi almarhum. Dilakukan oleh tenaga profesional terlatih dengan teknik yang tepat."
+      },
+      peti: {
+        title_en: "Casket Services",
+        title_id: "Peti Jenazah",
+        desc_en: "Quality caskets available in various materials and sizes. We provide standard and custom options to meet your needs.",
+        desc_id: "Peti jenazah berkualitas tersedia dalam berbagai bahan dan ukuran. Kami menyediakan pilihan standar dan custom sesuai kebutuhan Anda."
+      },
+      repatriasi: {
+        title_en: "International Repatriation",
+        title_id: "Repatriasi Luar Negeri",
+        desc_en: "Complete repatriation service for international transfers. We handle all documentation and coordination with authorities.",
+        desc_id: "Layanan repatriasi lengkap untuk transfer internasional. Kami menangani semua dokumentasi dan koordinasi dengan pihak berwenang."
+      },
+      kremasi: {
+        title_en: "Funeral Home & Cremation",
+        title_id: "Rumah Duka & Kremasi",
+        desc_en: "Complete funeral services including funeral home facilities, cremation services, and traditional grave relocation.",
+        desc_id: "Layanan pemakaman lengkap termasuk fasilitas rumah duka, layanan kremasi, dan pemindahan makam tradisional."
+      }
+    };
+
+    const galleryImages = [
+      "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=800&fit=crop"
+    ];
+
+    // === LANGUAGE LOGIC ===
+    let currentLang = 'id';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+      
+      document.getElementById('langToggle').textContent = lang === 'id' ? 'EN' : 'ID';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    // === THEME LOGIC ===
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // === MODAL LOGIC ===
+    function openServiceModal(serviceKey) {
+      const modal = document.getElementById('serviceModal');
+      const content = document.getElementById('serviceModalContent');
+      const service = serviceDetails[serviceKey];
+      
+      const title = currentLang === 'en' ? service.title_en : service.title_id;
+      const desc = currentLang === 'en' ? service.desc_en : service.desc_id;
+      const contactText = translations[currentLang].modal_contact;
+      const callText = translations[currentLang].modal_call;
+      const waText = translations[currentLang].modal_whatsapp;
+
+      content.innerHTML = `
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-500/30">
+            <span class="iconify text-3xl text-white" data-icon="mdi:ambulance"></span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">${title}</h3>
+          <p class="text-slate-600 dark:text-slate-400">${desc}</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:085176920291" class="emergency-btn flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold transition-all">
+            <span class="iconify text-xl" data-icon="mdi:phone"></span>
+            ${callText}
+          </a>
+          <a href="https://wa.me/6285176920291?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(title)}" class="whatsapp-btn flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold transition-all">
+            <span class="iconify text-xl" data-icon="mdi:whatsapp"></span>
+            ${waText}
+          </a>
+        </div>
+      `;
+      
+      modal.classList.add('active');
+    }
+
+    function closeServiceModal() {
+      document.getElementById('serviceModal').classList.remove('active');
+    }
+
+    function openGalleryModal(index) {
+      const modal = document.getElementById('galleryModal');
+      const img = document.getElementById('galleryModalImage');
+      img.src = galleryImages[index];
+      modal.classList.add('active');
+    }
+
+    function closeGalleryModal() {
+      document.getElementById('galleryModal').classList.remove('active');
+    }
+
+    // Close modals on background click
+    document.getElementById('serviceModal').addEventListener('click', function(e) {
+      if (e.target === this) closeServiceModal();
+    });
+
+    document.getElementById('galleryModal').addEventListener('click', function(e) {
+      if (e.target === this) closeGalleryModal();
+    });
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeServiceModal();
+        closeGalleryModal();
+      }
+    });
+
+    // === INITIALIZATION ===
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load Theme
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Load Language
+      const browserLang = navigator.language.startsWith('id') ? 'id' : 'en';
+      const savedLang = localStorage.getItem('lang') || browserLang;
+      setLanguage(savedLang);
+
+      // Event Listeners
+      document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+      document.getElementById('langToggle').addEventListener('click', () => {
+        setLanguage(currentLang === 'id' ? 'en' : 'id');
+      });
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('.iconify');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.setAttribute('data-icon', 'mdi:menu');
+      } else {
+        icon.setAttribute('data-icon', 'mdi:close');
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.querySelector('.iconify').setAttribute('data-icon', 'mdi:menu');
+      });
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        nav.classList.add('shadow-lg');
+      } else {
+        nav.classList.remove('shadow-lg');
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+</body>
+</html>
